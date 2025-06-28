@@ -1,12 +1,12 @@
 namespace Empleado
 {
-    enum Cargos
+    public enum Cargos
     {
         Auxiliar = 0,
         Administrativo = 1,
-        Ingeniero = 1,
-        Especialista = 2,
-        Investigador = 3
+        Ingeniero = 2,
+        Especialista = 3,
+        Investigador = 4
     }
     public class Empleado
     {
@@ -17,8 +17,7 @@ namespace Empleado
         public DateTime fechaDeIngreso;
         public double sueldo;
         public Cargos cargo;
-    }
-    public string Nombre
+        public string Nombre
         {
             get => nombre;
             set => nombre = value;
@@ -38,5 +37,7 @@ namespace Empleado
             get => fechaDeIngreso;
             set => fechaDeIngreso = value;
         }
+    }
+   
 
  }
