@@ -12,8 +12,8 @@ namespace Empleados
     }
     public class Empleado
     {
-        public string nombre;
-        public string apellido;
+        public required string nombre;
+        public required string apellido;
         public DateTime fechaDeNacimiento;
         public char estadoCivil;
         public DateTime fechaDeIngreso;
@@ -52,15 +52,28 @@ namespace Empleados
                 return edad;
             }
         }
-        static int Antiguedad(Empleado emp) => DateTime.Now.Year- emp.fechaDeIngreso.Year;
-        static int Jubilacion(Empleado emp) => 65 - emp.Edad;
-        static double Salario(Empleado emp)
+        public int Antiguedad
+        {
+            get
+            {
+                return DateTime.Now.Year - fechaDeIngreso.Year;
+            }
+        }
+
+        public int Jubilacion
+        {
+            get
+            {
+                return 65 - Edad; // Suponiendo que 65 es la edad de jubilación
+            }
+        }
+        public double Salario(Empleado emp)
         {
             double adicional;
             double adicional_casado=0;
-            if (Antiguedad(emp) <= 15)
+            if (Antiguedad <= 15)
             {
-                adicional = (double)Antiguedad(emp) / 100;
+                adicional = (double)Antiguedad / 100;
             }
             else
             {
@@ -76,7 +89,7 @@ namespace Empleados
             }
             return emp.sueldo * adicional + adicional_casado;
         }  
-
+    
     
     }
    
